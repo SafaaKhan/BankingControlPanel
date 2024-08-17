@@ -9,6 +9,11 @@ namespace BankingControlPanel_Models.Models
 {
     public class ApplicationRole : IdentityRole
     {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName)
+        {
+        }
+
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
 
     }

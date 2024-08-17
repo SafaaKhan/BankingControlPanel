@@ -1,11 +1,19 @@
+using BankingControlPanel_DataAccess.Data;
+using BankingControlPanel_Models;
+using BankingControlPanel_Models.Models;
 using BankingControlPanel_Models.ValidateModelAttributes;
 using BankingControlPanel_Utilities.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System.Net.Mime;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +34,10 @@ builder.Services.AddControllers( opt =>
     };
 });
 
+
 //Extensions
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
 
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BankingControlPanel_Models.Dtos;
 using BankingControlPanel_Models.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,9 @@ namespace BankingControlPanel_Utilities.Helpers
     {
         public MappingProfiles()
         {
-
+            CreateMap<ApplicationUser, UserDto>().ReverseMap();
+            CreateMap<RegisterDto, UserDto>().ReverseMap();
+            CreateMap<ApplicationUser, RegisterDto>().ReverseMap();
         }
     }
 }
