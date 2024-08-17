@@ -1,4 +1,5 @@
 ﻿using BankingControlPanel_DataAccess.Data;
+using BankingControlPanel_Utilities.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +22,7 @@ namespace BankingControlPanel_Utilities.Extensions
               options.UseSqlServer(connectionString));
 
             
-           // services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 
             services.AddEndpointsApiExplorer();

@@ -1,0 +1,19 @@
+﻿using AutoMapper;
+using BankingControlPanel_Models.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingControlPanel_Utilities.Helpers
+{
+    public class MappingProfiles : Profile
+    {
+        public MappingProfiles()
+        {
+
+        }
+    }
+}
