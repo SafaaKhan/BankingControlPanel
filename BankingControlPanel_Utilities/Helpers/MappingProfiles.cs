@@ -17,6 +17,9 @@ namespace BankingControlPanel_Utilities.Helpers
             CreateMap<ApplicationUser, UserDto>().ReverseMap();
             CreateMap<RegisterDto, UserDto>().ReverseMap();
             CreateMap<ApplicationUser, RegisterDto>().ReverseMap();
+            CreateMap<Client, ClientDto>().ReverseMap();
+            CreateMap<Address, AddressDto>().ReverseMap();
+            CreateMap<Account, AccountDto>().ReverseMap();
         }
     }
 }

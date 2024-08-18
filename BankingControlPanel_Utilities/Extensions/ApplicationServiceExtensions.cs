@@ -1,5 +1,8 @@
 ﻿using BankingControlPanel_DataAccess.Data;
+using BankingControlPanel_DataAccess.Repositories;
+using BankingControlPanel_DataAccess.Repositories.IRepositories;
 using BankingControlPanel_Utilities.Helpers;
+using BankingControlPanel_Utilities.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +26,7 @@ namespace BankingControlPanel_Utilities.Extensions
 
             
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-
+            services.AddScoped<IClientRepo,ClientRepo>();
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>

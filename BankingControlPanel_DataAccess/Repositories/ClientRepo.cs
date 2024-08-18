@@ -1,0 +1,51 @@
+﻿using AutoMapper;
+using BankingControlPanel_DataAccess.Data;
+using BankingControlPanel_DataAccess.Repositories.IRepositories;
+using BankingControlPanel_Models.Dtos;
+using BankingControlPanel_Models.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankingControlPanel_DataAccess.Repositories
+{
+    public class ClientRepo : IClientRepo
+    {
+        private readonly ApplicationDbContext _db;
+        private readonly IMapper _mapper;
+
+        public ClientRepo(ApplicationDbContext db, IMapper mapper)
+        {
+            _db = db;
+            _mapper = mapper;
+        }
+        public async Task<ResponseModel> AddClientAsync(ClientDto clientDto)
+        {
+            if(clientDto.Accounts.Count==0)
+            {
+                return ResponseModel.Failure("At least one account is required.", 500);
+
+            }
+
+            var client = _mapper.Map<Client>(clientDto);
+
+            _db.Clients.Add(client);
+
+            int result = await _db.SaveChangesAsync();
+            if (result<=0)
+            {
+                return ResponseModel.Failure("Failed to create the activity", 500);
+            }
+
+            return ResponseModel.Seccuss(_mapper.Map<ClientDto>(client), "");
+        }
+
+        public Task<ResponseModel> GetClientsAsync()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
