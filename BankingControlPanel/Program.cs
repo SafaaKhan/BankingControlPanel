@@ -3,6 +3,7 @@ using BankingControlPanel_Models;
 using BankingControlPanel_Models.Models;
 using BankingControlPanel_Models.ValidateModelAttributes;
 using BankingControlPanel_Utilities.Extensions;
+using BankingControlPanel_Utilities.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -44,6 +45,8 @@ builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

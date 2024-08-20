@@ -15,11 +15,11 @@ namespace BankingControlPanel_Models.Dtos
         public string Email { get; set; }
 
         [Required]
-        [StringLength(60,ErrorMessage = "First name should be less than 60 characters.")]
+        [StringLength(59,ErrorMessage = "First name should be less than 60 characters.")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(60, ErrorMessage = "Last name should be less than 60 characters.")]
+        [StringLength(59, ErrorMessage = "Last name should be less than 60 characters.")]
         public string LastName { get; set; }
 
         [Required]

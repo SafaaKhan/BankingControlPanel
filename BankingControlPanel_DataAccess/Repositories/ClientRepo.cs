@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,6 +63,14 @@ namespace BankingControlPanel_DataAccess.Repositories
                 query = query.Where(x => x.Address.City == userParams.City);
 
             return await PagedList<ClientDto>.CreateAsync(query.ProjectTo<ClientDto>(_mapper.ConfigurationProvider).AsNoTracking(), userParams.PageNumber, userParams.PageSize);
+        }
+
+        public async Task<List<string>> GetLastSearchParamsAsync(string userId,int paramsNum)
+        {
+            
+            return await  _db.SearchParamsLogs.Where(x=>x.UserId== userId).
+                OrderByDescending(x => x.CreatedAt).Take(paramsNum).
+                Select(x=>x.Parameters).ToListAsync();
         }
     }
 }

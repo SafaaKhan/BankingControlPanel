@@ -11,11 +11,9 @@ namespace BankingControlPanel_DataAccess.Repositories.IRepositories
 {
     public interface IClientRepo
     {
-        //add client 
-
-        // getClients with paging (userparams)
         Task<PagedList<ClientDto>> GetClientsAsync(UserParams userParams);
         Task<ResponseModel> AddClientAsync(ClientDto clientDto);
         Task AddSearchParamsLogAsync(string userId,string searchParams);
+        Task<List<string>> GetLastSearchParamsAsync(string userId,int paramsNum);
     }
 }

@@ -19,7 +19,7 @@ public class UserParams
         get => _pageSize;
         set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
     }
-
+    public int ParamsNum { get; set; }
     public string Sex { get; set; }
     public string CreatedAt { get; set; }//orderby
     public string City { get; set; }
