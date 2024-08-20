@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using BankingControlPanel_DataAccess.Data;
 using BankingControlPanel_DataAccess.Repositories.IRepositories;
 using BankingControlPanel_Models.Dtos;
 using BankingControlPanel_Models.Models;
+using BankingControlPanel_Models.Pagination;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,9 +46,22 @@ namespace BankingControlPanel_DataAccess.Repositories
             return ResponseModel.Seccuss(_mapper.Map<ClientDto>(client), "");
         }
 
-        public Task<ResponseModel> GetClientsAsync()
+        public async Task AddSearchParamsLogAsync(string userId,string searchParams)
         {
-            throw new NotImplementedException();
+            _db.SearchParamsLogs.Add(new SearchParamsLog { UserId = userId, Parameters = searchParams });
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<PagedList<ClientDto>> GetClientsAsync(UserParams userParams)
+        {
+            var query = _db.Clients.AsQueryable();
+
+            if (!string.IsNullOrEmpty(userParams.Sex))
+                query=query.Where(x => x.Sex == userParams.Sex);
+            if (!string.IsNullOrEmpty(userParams.City))
+                query = query.Where(x => x.Address.City == userParams.City);
+
+            return await PagedList<ClientDto>.CreateAsync(query.ProjectTo<ClientDto>(_mapper.ConfigurationProvider).AsNoTracking(), userParams.PageNumber, userParams.PageSize);
         }
     }
 }

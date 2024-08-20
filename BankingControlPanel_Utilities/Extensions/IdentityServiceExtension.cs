@@ -22,7 +22,7 @@ namespace BankingControlPanel_Utilities.Extensions
         {
             services.AddIdentity<ApplicationUser,ApplicationRole>(opt =>
             {
-                // opt.Password.RequireNonAlphanumeric = false;
+                
             })
                 .AddRoles<ApplicationRole>()
                 .AddRoleManager<RoleManager<ApplicationRole>>()
@@ -38,17 +38,13 @@ namespace BankingControlPanel_Utilities.Extensions
                     {
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = key,
-                        ValidateIssuer = false,//search later
-                        ValidateAudience = false//search later
+                        ValidateIssuer = false,
+                        ValidateAudience = false
                     };
                 });
             services.AddScoped<TokenService>();
 
-            services.AddAuthorization(opt =>
-            {
-                opt.AddPolicy(SD.RequireAdminRolePolicy, policy => policy.RequireRole(SD.AdminRole));
-                opt.AddPolicy(SD.RequireUserRolePolicy, policy => policy.RequireRole(SD.AdminRole, SD.UserRole));
-            });
+           
             return services;
         }
     }

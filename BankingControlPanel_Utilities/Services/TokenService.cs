@@ -41,7 +41,7 @@ namespace BankingControlPanel_Utilities.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7), 
+                Expires = DateTime.Now.AddMinutes(30), 
                 SigningCredentials = cred
             };
 

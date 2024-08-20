@@ -20,6 +20,7 @@ namespace BankingControlPanel_DataAccess.Data
         {
         }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<SearchParamsLog> SearchParamsLogs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

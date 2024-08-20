@@ -24,6 +24,7 @@ namespace BankingControlPanel_Models.Dtos
 
         [Required]
         [StringLength(11,MinimumLength =11, ErrorMessage = "Personal Id should be exactly 11 characters.")]
+       // [RegularExpression(@"^\d{11}$", ErrorMessage = "Personal Id should be exactly 11 digits.")]
         public string PersonalId { get; set; }
 
         public string ProfilePhoto { get; set; }

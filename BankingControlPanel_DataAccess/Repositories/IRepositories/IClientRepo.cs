@@ -1,5 +1,6 @@
 ﻿using BankingControlPanel_Models.Dtos;
 using BankingControlPanel_Models.Models;
+using BankingControlPanel_Models.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace BankingControlPanel_DataAccess.Repositories.IRepositories
         //add client 
 
         // getClients with paging (userparams)
-        Task<ResponseModel> GetClientsAsync();
+        Task<PagedList<ClientDto>> GetClientsAsync(UserParams userParams);
         Task<ResponseModel> AddClientAsync(ClientDto clientDto);
+        Task AddSearchParamsLogAsync(string userId,string searchParams);
     }
 }
