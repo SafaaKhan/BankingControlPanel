@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankingControlPanel_Models
 {
-    public class SD  //static details
+    public class SD  //static data
     {
         public const string AdminRole = "Admin";
         public const string UserRole = "User";
-        public const string RequireAdminRolePolicy = "RequireAdminRole";
-        public const string RequireUserRolePolicy = "RequireAdminRole";
     }
 }

@@ -26,6 +26,7 @@ namespace BankingControlPanel_DataAccess.Repositories
             _db = db;
             _mapper = mapper;
         }
+
         public async Task<ResponseModel> AddClientAsync(ClientDto clientDto)
         {
             if(clientDto.Accounts.Count==0)
@@ -57,6 +58,8 @@ namespace BankingControlPanel_DataAccess.Repositories
         {
             var query = _db.Clients.AsQueryable();
 
+            query = userParams.Orderby == "asc" ? query.OrderBy(x => x.CreatedAt) : query.OrderByDescending(x => x.CreatedAt);
+
             if (!string.IsNullOrEmpty(userParams.Sex))
                 query=query.Where(x => x.Sex == userParams.Sex);
             if (!string.IsNullOrEmpty(userParams.City))
@@ -67,7 +70,6 @@ namespace BankingControlPanel_DataAccess.Repositories
 
         public async Task<List<string>> GetLastSearchParamsAsync(string userId,int paramsNum)
         {
-            
             return await  _db.SearchParamsLogs.Where(x=>x.UserId== userId).
                 OrderByDescending(x => x.CreatedAt).Take(paramsNum).
                 Select(x=>x.Parameters).ToListAsync();

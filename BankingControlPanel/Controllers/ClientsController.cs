@@ -52,9 +52,7 @@ namespace BankingControlPanel.Controllers
                 clients.CurrentPage,
                 clients.TotalPages,
                 userParams.Sex,
-                userParams.City,
-                userParams.CreatedAt
-
+                userParams.City
             };
 
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

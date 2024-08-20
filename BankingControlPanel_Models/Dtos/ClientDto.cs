@@ -28,7 +28,8 @@ namespace BankingControlPanel_Models.Dtos
         public string PersonalId { get; set; }
 
         public string ProfilePhoto { get; set; }
-        //https://www.nuget.org/packages/libphonenumber-csharp
+        public string CreatedAt { get; set; }
+       
         [Required]
         [PhoneNumber("KSA")]
         public string MobileNumber { get; set; }

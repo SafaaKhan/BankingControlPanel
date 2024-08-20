@@ -37,15 +37,15 @@ builder.Services.AddControllers( opt =>
 
 
 //Extensions
-builder.Services.AddApplicationServices(builder.Configuration);
-builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddApplicationServices(builder.Configuration); // the required services are added to the extsion to keep the code clean.
+builder.Services.AddIdentityServices(builder.Configuration); // the requird services for Identity 
 
 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>(); //global handling errors
 
 if (app.Environment.IsDevelopment())
 {

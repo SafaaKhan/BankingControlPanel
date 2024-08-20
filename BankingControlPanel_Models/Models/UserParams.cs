@@ -21,6 +21,6 @@ public class UserParams
     }
     public int ParamsNum { get; set; }
     public string Sex { get; set; }
-    public string CreatedAt { get; set; }//orderby
     public string City { get; set; }
+    public string Orderby { get; set; }
 }

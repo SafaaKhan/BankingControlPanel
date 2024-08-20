@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BankingControlPanel_Utilities.Helpers
 {
-    public class ExceptionMiddleware
+    public class ExceptionMiddleware //global handling errors
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
