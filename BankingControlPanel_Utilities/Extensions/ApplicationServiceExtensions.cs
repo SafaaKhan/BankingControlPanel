@@ -10,9 +10,9 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BankingControlPanel_Utilities.Extensions
 {
     public static class ApplicationServiceExtensions
@@ -59,11 +59,11 @@ namespace BankingControlPanel_Utilities.Extensions
                     }
 
                 });
+                var xmlFile = $"BankingControlPanel.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
 
             });
-
-
-
             return services;
         }
     }

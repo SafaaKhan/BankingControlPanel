@@ -29,7 +29,6 @@ builder.Services.AddControllers( opt =>
     options.InvalidModelStateResponseFactory = context =>
     {
         var result = new ValidationFailedResult(context.ModelState);
-        // TODO: add `using System.Net.Mime;` to resolve MediaTypeNames
         result.ContentTypes.Add(MediaTypeNames.Application.Json);
         return result;
     };
@@ -39,8 +38,6 @@ builder.Services.AddControllers( opt =>
 //Extensions
 builder.Services.AddApplicationServices(builder.Configuration); // the required services are added to the extsion to keep the code clean.
 builder.Services.AddIdentityServices(builder.Configuration); // the requird services for Identity 
-
-
 
 var app = builder.Build();
 

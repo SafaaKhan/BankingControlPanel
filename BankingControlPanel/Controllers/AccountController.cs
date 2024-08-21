@@ -37,6 +37,17 @@ namespace BankingControlPanel.Controllers
             _tokenService = tokenService;
         }
 
+
+        /// <summary>
+        /// Log in to the system using email and password, and get the token for authorization
+        /// (in Swagger -> add the token in authorize window)
+        /// </summary>
+        /// <param name="loginDto">The login data transfer object (loginDto).</param>
+        /// <returns></returns>
+        /// <response code="200"> A response indicating the success along with create token </response>
+        /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
+        /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel))]
         [HttpPost("login")]
         [ValidateModel]
         public async Task<IActionResult> Login(LoginDto loginDto)
@@ -55,7 +66,15 @@ namespace BankingControlPanel.Controllers
         }
 
 
-
+        /// <summary>
+        /// Register to the system, username and email must be unique
+        /// </summary>
+        /// <param name="registerDto">The registration data transfer object (registerDto).</param>
+        /// <returns></returns>
+        /// <response code="200"> A response indicating the success along with create user json </response>
+        /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
+        /// <response code="500">If there is an internal server error (Response Model) </response>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel))]
         [HttpPost("register")]
         [ValidateModel]
         public async Task<IActionResult> Register(RegisterDto registerDto)

@@ -32,6 +32,16 @@ namespace BankingControlPanel.Controllers
         }
 
 
+        /// <summary>
+        /// Add the client to the system by admin user.
+        /// (must sent the token (admin user) to avoid unauthorized access)
+        /// </summary>
+        /// <param name="clientDto">The client data transfer object (clientDto).</param>
+        /// <returns></returns>
+        /// <response code="200"> A response indicating the success along with client has been added (clientDto)</response>
+        /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
+        /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel))]
         [HttpPost("addClient")]
         [ValidateModel]
         public async Task<IActionResult> AddClient([FromBody] ClientDto clientDto)
@@ -40,6 +50,16 @@ namespace BankingControlPanel.Controllers
         }
 
 
+        /// <summary>
+        /// Get clients with (pagination, filtering, sorting => pass 'desc'/'asc' in orderBy()) params.
+        /// (must sent the token (admin user) to avoid unauthorized access)
+        /// </summary>
+        /// <param name="userParams"></param>
+        /// <returns></returns>
+        /// <response code="200"> A response indicating the success for getting users</response>
+        /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
+        /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel))]
         [HttpGet("getClients")]
         public async Task<IActionResult> GetClients([FromQuery] UserParams userParams)
         {
@@ -62,6 +82,15 @@ namespace BankingControlPanel.Controllers
         }
 
 
+        /// <summary>
+        /// Get the last search parameters.
+        /// (must sent the token (admin user) to avoid unauthorized access)
+        /// </summary>
+        /// <param name="userParams"> Pass the required number of parameters in ParamsNum</param>
+        /// <returns></returns>
+        /// <response code="200"> A response indicating the success for getting last searched parameters</response>
+        /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
+        /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
         [HttpGet("getLastSearchParams")]
         public async Task<IActionResult> GetLastSearchParams([FromQuery]UserParams userParams)
         {
