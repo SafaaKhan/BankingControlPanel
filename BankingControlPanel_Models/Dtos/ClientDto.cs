@@ -28,7 +28,7 @@ namespace BankingControlPanel_Models.Dtos
         public string PersonalId { get; set; }
 
         public string ProfilePhoto { get; set; }
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
        
         [Required]
         [PhoneNumber("KSA")]
