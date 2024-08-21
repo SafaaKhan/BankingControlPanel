@@ -59,7 +59,7 @@ namespace BankingControlPanel.Controllers
         /// <response code="200"> A response indicating the success for getting users</response>
         /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
         /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ResponseModel))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PagedList<ClientDto>))]
         [HttpGet("getClients")]
         public async Task<IActionResult> GetClients([FromQuery] UserParams userParams)
         {
@@ -91,6 +91,7 @@ namespace BankingControlPanel.Controllers
         /// <response code="200"> A response indicating the success for getting last searched parameters</response>
         /// <response code="400" > A response indicating the failure with isSeccuss= false in Response Model </response>
         /// <response code="500">If there is an internal server error with isSeccuss= false in Response Model </response>
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<object>))]
         [HttpGet("getLastSearchParams")]
         public async Task<IActionResult> GetLastSearchParams([FromQuery]UserParams userParams)
         {

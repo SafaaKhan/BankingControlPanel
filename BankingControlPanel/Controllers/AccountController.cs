@@ -79,10 +79,11 @@ namespace BankingControlPanel.Controllers
         [ValidateModel]
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
-            if (await _userManager.Users.AnyAsync(x => x.Email == registerDto.Email))
+            var users = _userManager.Users;
+            if (await users.AnyAsync(x => x.Email == registerDto.Email))
                 return Ok(ResponseModel.Failure("Enter another email", 400));
 
-            if (await _userManager.Users.AnyAsync(x => x.UserName == registerDto.UserName))
+            if (await users.AnyAsync(x => x.UserName == registerDto.UserName))
                 return Ok(ResponseModel.Failure("Enter another username", 400));
 
 

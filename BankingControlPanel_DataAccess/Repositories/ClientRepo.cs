@@ -31,7 +31,7 @@ namespace BankingControlPanel_DataAccess.Repositories
         {
             if(clientDto.Accounts.Count==0)
             {
-                return ResponseModel.Failure("At least one account is required.", 500);
+                return ResponseModel.Failure("At least one account is required.", 400);
 
             }
 
