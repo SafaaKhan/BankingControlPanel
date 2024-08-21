@@ -41,7 +41,7 @@ namespace BankingControlPanel_Utilities.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(30), //token is valid only for 30 min
+                Expires = DateTime.UtcNow.AddMinutes(30), //token is valid only for 30 min
                 SigningCredentials = cred
             };
 

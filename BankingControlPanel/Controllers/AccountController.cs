@@ -92,8 +92,8 @@ namespace BankingControlPanel.Controllers
             var result = await _userManager.CreateAsync(user, registerDto.Password);
 
             //only for the first run of the project is needed
-            //await _roleManager.CreateAsync(new ApplicationRole(SD.AdminRole));
-            //await _roleManager.CreateAsync(new ApplicationRole(SD.UserRole));
+           // await _roleManager.CreateAsync(new ApplicationRole(SD.AdminRole));
+           // await _roleManager.CreateAsync(new ApplicationRole(SD.UserRole));
 
             // in the consumer application (1- type must not be entered by the user 2- type will be sent depending on the register user role)
             IdentityResult roleResult;

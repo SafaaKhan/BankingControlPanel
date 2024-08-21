@@ -9,7 +9,7 @@ namespace BankingControlPanel_Models.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public DateTime CreatedAt { get; set; }= DateTime.Now;
+        public DateTime CreatedAt { get; set; }= DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
         public ICollection<ApplicationUserRole> UserRoles { get; set; }
     }

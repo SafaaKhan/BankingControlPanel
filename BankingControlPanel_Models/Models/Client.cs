@@ -16,7 +16,7 @@ namespace BankingControlPanel_Models.Models
         public string ProfilePhoto { get; set; }
         public string MobileNumber { get; set; }
         public string Sex { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; }
         public Address Address { get; set; }
         public ICollection<Account> Accounts { get; set; }

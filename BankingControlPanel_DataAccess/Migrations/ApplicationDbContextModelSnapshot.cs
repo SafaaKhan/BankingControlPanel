@@ -40,7 +40,7 @@ namespace BankingControlPanel_DataAccess.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Account");
+                    b.ToTable("Account", (string)null);
                 });
 
             modelBuilder.Entity("BankingControlPanel_Models.Models.Address", b =>
@@ -65,7 +65,7 @@ namespace BankingControlPanel_DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.ToTable("Address", (string)null);
                 });
 
             modelBuilder.Entity("BankingControlPanel_Models.Models.ApplicationRole", b =>
@@ -223,7 +223,7 @@ namespace BankingControlPanel_DataAccess.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("BankingControlPanel_Models.Models.SearchParamsLog", b =>
@@ -245,7 +245,7 @@ namespace BankingControlPanel_DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SearchParamsLogs");
+                    b.ToTable("SearchParamsLogs", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
