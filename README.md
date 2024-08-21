@@ -7,7 +7,7 @@
 2. **Class Libraries**:
     - **Access Data**: Includes migration files and repositories.
     - **Models**: Contains models, DTOs, pagination, validation attributes, and static data files.
-    - **Utilities**: Includes extensions, helper classes, middleware (ExceptionMiddleware for global error handling), and services (e.g., token service for JWT Bearer).
+    - **Utilities**: Includes extensions, helper classes, middleware (ExceptionMiddleware for global error handling), and services (e.g., token service for JWT Bearer=> SigningCredentials with SecurityAlgorithms=>HmacSha512Signature).
 
 3. **Repository**: Used for client CRUD operations.
 
@@ -31,4 +31,4 @@
 ## Documentation and Testing
 
 1. **Swagger**: For interactive API documentation. 
-2. **Postman**: Postman variables and scripts are used for an easier testing process.
+2. **Postman**: 1- Postman variables and scripts are used for an easier testing process. 2- Pagination also set in the Headers. 
